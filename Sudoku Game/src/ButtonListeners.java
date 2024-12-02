@@ -26,26 +26,16 @@ public class ButtonListeners {
                     if (puzzle[row][col] == 0) {
                         cells[row][col].setText(String.valueOf(solution[row][col]));
                         cells[row][col].setEditable(false);
-                        // Removed the line that changes the background color
                         cells[row][col].setForeground(Color.BLUE);
-                        solutionFilledCells[row][col] = true; // Mark cell as filled by "Show Solution"
+                        solutionFilledCells[row][col] = true;
                     }
                 }
             }
-            gui.stopTimer(); // Stop the timer when showing solution
+            gui.stopTimer();
             int timeElapsed = gui.getSecondsElapsed();
             JOptionPane.showMessageDialog(gui, "Here is the solution!");
         }
-
-
-        private String formatTime(int seconds) {
-            int minutes = seconds / 60;
-            int remainingSeconds = seconds % 60;
-            return String.format("%02d:%02d", minutes, remainingSeconds);
-        }
     }
-
-
 
     public class ClearSolutionListener implements ActionListener {
         @Override
@@ -62,15 +52,13 @@ public class ButtonListeners {
                         cells[row][col].setEditable(true);
                         cells[row][col].setBackground(Color.WHITE);
                         cells[row][col].setForeground(Color.BLACK);
-                        solutionFilledCells[row][col] = false; // Clear the tracking for this cell
+                        solutionFilledCells[row][col] = false;
                     }
                 }
             }
             JOptionPane.showMessageDialog(gui, "Solution cells have been cleared!");
         }
     }
-
-
 
     public class HintButtonListener implements ActionListener {
         @Override
@@ -127,7 +115,7 @@ public class ButtonListeners {
                 BoardInitializer.initializeBoard(gui);
 
                 gui.setSolutionFilledCells(new boolean[gui.getGridSize()][gui.getGridSize()]);
-
+                gui.resetTimer();
             }
         }
     }
@@ -154,7 +142,8 @@ public class ButtonListeners {
             PuzzleManager.loadPuzzle(gui);
             BoardInitializer.initializeBoard(gui);
             gui.setSolutionFilledCells(new boolean[gui.getGridSize()][gui.getGridSize()]);
-            gui.resetTimer(); // Reset the timer when restarting
+            gui.resetTimer();
         }
     }
 }
+

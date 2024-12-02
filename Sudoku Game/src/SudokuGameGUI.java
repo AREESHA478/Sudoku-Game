@@ -52,6 +52,9 @@ public class SudokuGameGUI extends JFrame {
         bestTimeLabel.setFont(new Font("Arial", Font.BOLD, 16));
         timerPanel.add(bestTimeLabel);
 
+        timeComparisonLabel = new JLabel("Comparison: --:--");
+        timeComparisonLabel.setFont(new Font("Arial", Font.ITALIC, 14));
+        timerPanel.add(timeComparisonLabel);
 
         add(timerPanel, BorderLayout.NORTH);
 
